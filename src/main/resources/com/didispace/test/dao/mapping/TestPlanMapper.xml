@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.didispace.test.dao.mapping.TestPlanMapper" >
+  <resultMap id="BaseResultMap" type="com.didispace.test.dao.impl.TestPlan" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="plantime" property="plantime" jdbcType="VARCHAR" />
+    <result column="projectname" property="projectname" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, plantime, projectname, description
+  </sql>
+  <select id="selectMaxId" resultType="java.lang.Integer" >
+    select max(id) from test_plan
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from test_plan
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from test_plan
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.didispace.test.dao.impl.TestPlan" >
+    insert into test_plan (id, plantime, projectname, 
+      description)
+    values (#{id,jdbcType=INTEGER}, #{plantime,jdbcType=VARCHAR}, #{projectname,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.didispace.test.dao.impl.TestPlan" >
+    insert into test_plan
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="plantime != null" >
+        plantime,
+      </if>
+      <if test="projectname != null" >
+        projectname,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="plantime != null" >
+        #{plantime,jdbcType=VARCHAR},
+      </if>
+      <if test="projectname != null" >
+        #{projectname,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.didispace.test.dao.impl.TestPlan" >
+    update test_plan
+    <set >
+      <if test="plantime != null" >
+        plantime = #{plantime,jdbcType=VARCHAR},
+      </if>
+      <if test="projectname != null" >
+        projectname = #{projectname,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.didispace.test.dao.impl.TestPlan" >
+    update test_plan
+    set plantime = #{plantime,jdbcType=VARCHAR},
+      projectname = #{projectname,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

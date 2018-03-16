@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.didispace.test.dao.mapping.TestCaseRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.didispace.test.dao.impl.TestCaseRecord" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="classname" property="classname" jdbcType="VARCHAR" />
+    <result column="interfacename" property="interfacename" jdbcType="VARCHAR" />
+    <result column="testcaseid" property="testcaseid" jdbcType="VARCHAR" />
+    <result column="testpoint" property="testpoint" jdbcType="VARCHAR" />
+    <result column="plan_id" property="planId" jdbcType="INTEGER" />
+    <result column="result_sign" property="resultSign" jdbcType="VARCHAR" />
+    <result column="errordes" property="errordes" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, classname, interfacename, testcaseid, testpoint, plan_id, result_sign, errordes
+  </sql>
+    <sql id="result_Column_List" >
+       interfacename, testcaseid, testpoint, result_sign, errordes
+  </sql>
+  <select id="getTestCasesByPlanIdOrInterface" resultMap="BaseResultMap" parameterType="com.didispace.test.dao.impl.TestCaseRecord">
+			select 
+        <include refid="result_Column_List" /> 
+      from test_case_record r
+			where r.plan_id = #{planId,jdbcType=INTEGER} and r.interfacename = #{interfacename,jdbcType=VARCHAR};
+  </select>
+  <select id="getTestPlanRstHashMap" resultType="java.util.HashMap" parameterType="java.lang.Integer">
+			select  r.interfacename 'interfaceName',
+							sum(case r.result_sign  when '0' then 1 else 0 end) 'success',
+							sum(case r.result_sign  when '1' then 1 else 0 end) 'fail',
+							sum(case r.result_sign  when '2' then 1 else 0 end) 'error',
+			        sum(1) 'total'
+			from test_case_record r where r.plan_id = #{plan_id,jdbcType=INTEGER} group by r.interfacename
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from test_case_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from test_case_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.didispace.test.dao.impl.TestCaseRecord" >
+    insert into test_case_record (id, classname, interfacename, 
+      testcaseid, testpoint, plan_id, 
+      result_sign, errordes)
+    values (#{id,jdbcType=INTEGER}, #{classname,jdbcType=VARCHAR}, #{interfacename,jdbcType=VARCHAR}, 
+      #{testcaseid,jdbcType=VARCHAR}, #{testpoint,jdbcType=VARCHAR}, #{planId,jdbcType=INTEGER}, 
+      #{resultSign,jdbcType=VARCHAR}, #{errordes,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.didispace.test.dao.impl.TestCaseRecord" >
+    insert into test_case_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="classname != null" >
+        classname,
+      </if>
+      <if test="interfacename != null" >
+        interfacename,
+      </if>
+      <if test="testcaseid != null" >
+        testcaseid,
+      </if>
+      <if test="testpoint != null" >
+        testpoint,
+      </if>
+      <if test="planId != null" >
+        plan_id,
+      </if>
+      <if test="resultSign != null" >
+        result_sign,
+      </if>
+      <if test="errordes != null" >
+        errordes,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="classname != null" >
+        #{classname,jdbcType=VARCHAR},
+      </if>
+      <if test="interfacename != null" >
+        #{interfacename,jdbcType=VARCHAR},
+      </if>
+      <if test="testcaseid != null" >
+        #{testcaseid,jdbcType=VARCHAR},
+      </if>
+      <if test="testpoint != null" >
+        #{testpoint,jdbcType=VARCHAR},
+      </if>
+      <if test="planId != null" >
+        #{planId,jdbcType=INTEGER},
+      </if>
+      <if test="resultSign != null" >
+        #{resultSign,jdbcType=VARCHAR},
+      </if>
+      <if test="errordes != null" >
+        #{errordes,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.didispace.test.dao.impl.TestCaseRecord" >
+    update test_case_record
+    <set >
+      <if test="classname != null" >
+        classname = #{classname,jdbcType=VARCHAR},
+      </if>
+      <if test="interfacename != null" >
+        interfacename = #{interfacename,jdbcType=VARCHAR},
+      </if>
+      <if test="testcaseid != null" >
+        testcaseid = #{testcaseid,jdbcType=VARCHAR},
+      </if>
+      <if test="testpoint != null" >
+        testpoint = #{testpoint,jdbcType=VARCHAR},
+      </if>
+      <if test="planId != null" >
+        plan_id = #{planId,jdbcType=INTEGER},
+      </if>
+      <if test="resultSign != null" >
+        result_sign = #{resultSign,jdbcType=VARCHAR},
+      </if>
+      <if test="errordes != null" >
+        errordes = #{errordes,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.didispace.test.dao.impl.TestCaseRecord" >
+    update test_case_record
+    set classname = #{classname,jdbcType=VARCHAR},
+      interfacename = #{interfacename,jdbcType=VARCHAR},
+      testcaseid = #{testcaseid,jdbcType=VARCHAR},
+      testpoint = #{testpoint,jdbcType=VARCHAR},
+      plan_id = #{planId,jdbcType=INTEGER},
+      result_sign = #{resultSign,jdbcType=VARCHAR},
+      errordes = #{errordes,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
