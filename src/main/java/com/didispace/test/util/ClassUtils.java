@@ -92,19 +92,19 @@ public class ClassUtils {
     	return clslist;
     }
     
-    public static void main(String[] args) throws ClassNotFoundException, IOException
-    {
-    	 ArrayList<Class>  x = ClassUtils.filterClassByKey("HelloController","com");
-    	 System.out.println("xxx="+x.size());
-    	 for(Class s : x)
-    		 System.out.println(s.getName());
-    	 ArrayList<Method> als = AnnotationFilterClass.filterMethodListByAnnotation( x, TestCase.class);
-    	 for(Method md:als)
-    	 {
-    		 System.out.println(md.getName());
-    	 }
-    	 //WebApplicationContext wac = ContextLoader.getCurrentWebApplicationContext();
-
-    }
+//    public static void main(String[] args) throws ClassNotFoundException, IOException
+//    {
+//    	 ArrayList<Class>  x = ClassUtils.filterClassByKey("HelloController","com");
+//    	 System.out.println("xxx="+x.size());
+//    	 for(Class s : x)
+//    		 System.out.println(s.getName());
+//    	 ArrayList<Method> als = AnnotationFilterClass.filterMethodListByAnnotation( x, TestCase.class);
+//    	 for(Method md:als)
+//    	 {
+//    		 System.out.println(md.getName());
+//    	 }
+//    	 //WebApplicationContext wac = ContextLoader.getCurrentWebApplicationContext();
+//
+//    }
 }
 

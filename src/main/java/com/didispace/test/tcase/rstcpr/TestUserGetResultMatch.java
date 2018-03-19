@@ -94,27 +94,27 @@ public class TestUserGetResultMatch {
 	        String stra = objectMapper.writeValueAsString(hmp);
 	        return stra ;
 	 }
-	 public static void main(String[] args)
-	 {
-		 Class a = UserAddInfo.class;
-		 Class b = Class.class;
-		 Class c = UserAddInfo.class;
-		 if(a==b)
-		 {
-			 System.out.println("aaaa");
-		 }
-		 if(a==c)
-		 {
-			 System.out.println("bbbbb");
-		 }
-		 if(a.equals(b))
-		 {
-			 System.out.println("ccccc");
-		 }
-		 if(a.equals(c))
-		 {
-			 System.out.println("ddddd");
-		 }
-	 }
+//	 public static void main(String[] args)
+//	 {
+//		 Class a = UserAddInfo.class;
+//		 Class b = Class.class;
+//		 Class c = UserAddInfo.class;
+//		 if(a==b)
+//		 {
+//			 System.out.println("aaaa");
+//		 }
+//		 if(a==c)
+//		 {
+//			 System.out.println("bbbbb");
+//		 }
+//		 if(a.equals(b))
+//		 {
+//			 System.out.println("ccccc");
+//		 }
+//		 if(a.equals(c))
+//		 {
+//			 System.out.println("ddddd");
+//		 }
+//	 }
 
 }

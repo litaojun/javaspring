@@ -187,16 +187,16 @@ public class TestContorl
 		return "litaojun";
 		
 	 }
-	public static void main(String[] args)
-	{
-		ObjectMapper objectMapper = new ObjectMapper();
-		try {
-			Object ob = objectMapper.readValue("{\"retcode\":1,\"errstr\":\"sssssssssssssss\"}", UserAddRsp.class);
-			UserAddRsp fob = objectMapper.readValue("{'retcode':1,'errstr':'sssssssssssssss'}", UserAddRsp.class);
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+//	public static void main(String[] args)
+//	{
+//		ObjectMapper objectMapper = new ObjectMapper();
+//		try {
+//			Object ob = objectMapper.readValue("{\"retcode\":1,\"errstr\":\"sssssssssssssss\"}", UserAddRsp.class);
+//			UserAddRsp fob = objectMapper.readValue("{'retcode':1,'errstr':'sssssssssssssss'}", UserAddRsp.class);
+//			
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 }

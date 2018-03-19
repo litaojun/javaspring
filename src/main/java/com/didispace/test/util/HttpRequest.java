@@ -131,13 +131,13 @@ public class HttpRequest {
         return result;
     }    
     
-    public static void main(String[] args) {
-        //���� GET ����
-//        String s=HttpRequest.sendGet("http://localhost:8080/appDemo/oauth/token", "key=123&v=456");
-//        System.out.println(s);
-        
-        //���� POST ����
-        String sr=HttpRequest.sendPost("http://localhost:8080/appDemo/oauth/token", "code=nWtMOy&client_id=m1&client_secret=s1&grant_type=authorization_code&redirect_uri=http%3a%2f%2flocalhost%3a8080%2fappDemo%2flitaojun%2ftestapp");
-        System.out.println(sr);
-    }
+//    public static void main(String[] args) {
+//        //���� GET ����
+////        String s=HttpRequest.sendGet("http://localhost:8080/appDemo/oauth/token", "key=123&v=456");
+////        System.out.println(s);
+//        
+//        //���� POST ����
+//        String sr=HttpRequest.sendPost("http://localhost:8080/appDemo/oauth/token", "code=nWtMOy&client_id=m1&client_secret=s1&grant_type=authorization_code&redirect_uri=http%3a%2f%2flocalhost%3a8080%2fappDemo%2flitaojun%2ftestapp");
+//        System.out.println(sr);
+//    }
 }

@@ -114,16 +114,16 @@ public class OrderJsonTranTest {
         }  
         return oll;
     }  
-	public static void main(String[] args) throws JsonGenerationException, JsonMappingException, IOException
-	{
-		OrderJsonTranTest ojtt = new OrderJsonTranTest();
-//		String retstr = ojtt.Entry2Json();
+//	public static void main(String[] args) throws JsonGenerationException, JsonMappingException, IOException
+//	{
+//		OrderJsonTranTest ojtt = new OrderJsonTranTest();
+////		String retstr = ojtt.Entry2Json();
+////		System.out.println("retstr="+retstr);
+////		OrderImpl oll =ojtt.json2Entry(retstr);
+////		System.out.println("oll="+oll.getOdrid()+"-------"+oll.getUser().getSex());
+//		String retstr = ojtt.list2Json();
 //		System.out.println("retstr="+retstr);
-//		OrderImpl oll =ojtt.json2Entry(retstr);
-//		System.out.println("oll="+oll.getOdrid()+"-------"+oll.getUser().getSex());
-		String retstr = ojtt.list2Json();
-		System.out.println("retstr="+retstr);
-		OrderImplList oll =ojtt.json2EntryList(retstr);
-		System.out.println("oll="+oll.getOdrid()+"-------"+oll.getUserlist().get(0).getBirthday());
-	}
+//		OrderImplList oll =ojtt.json2EntryList(retstr);
+//		System.out.println("oll="+oll.getOdrid()+"-------"+oll.getUserlist().get(0).getBirthday());
+//	}
 }

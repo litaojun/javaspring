@@ -57,13 +57,13 @@ public class WebLogAspect {
         //logger.info("SPEND TIME : " + (System.currentTimeMillis() - startTime.get()));
     }
 
-    public static void main(String[] args)
-    {
-    	String pureResultString = "b001.001.004?uuid=007";
-    	String[] a = pureResultString.split("[?]");
-    	System.out.println(String.format("%s----%s", a));
-    	//pureResultString.sp
-    }
+//    public static void main(String[] args)
+//    {
+//    	String pureResultString = "b001.001.004?uuid=007";
+//    	String[] a = pureResultString.split("[?]");
+//    	System.out.println(String.format("%s----%s", a));
+//    	//pureResultString.sp
+//    }
 
 }
 

@@ -29,14 +29,14 @@ public class SpringUtil {
 	 * @throws JsonMappingException 
 	 * @throws JsonGenerationException 
 	 */
-	public static void main(String[] args) throws JsonGenerationException, JsonMappingException, IOException {
-
-		ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
-		TestCaseRecordMapper us = (TestCaseRecordMapper) getBean("testCaseRecordMapper");
-		TestCaseRecord at = us.selectByPrimaryKey(551);
-		System.out.println(at.getClassname());
-		
-	}
+//	public static void main(String[] args) throws JsonGenerationException, JsonMappingException, IOException {
+//
+//		ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
+//		TestCaseRecordMapper us = (TestCaseRecordMapper) getBean("testCaseRecordMapper");
+//		TestCaseRecord at = us.selectByPrimaryKey(551);
+//		System.out.println(at.getClassname());
+//		
+//	}
 
 	private static ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
 

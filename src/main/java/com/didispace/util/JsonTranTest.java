@@ -166,20 +166,20 @@ public class JsonTranTest {
         }  
         return map;
     }  
-	public static void main(String[] args) throws JsonGenerationException, JsonMappingException, IOException
-	{
-		JsonTranTest jtt = new JsonTranTest();
-		String retstr = jtt.Entry2Json();
-		System.out.println("retstr="+retstr);
-		User user = jtt.json2Entry(retstr);
-		System.out.println("user="+user.getBirthday());
-		 retstr = jtt.list2Json();
-		 System.out.println("retstr="+retstr);
-		 User[] arruser = jtt.json2Array(retstr);
-		System.out.println("User[] arruser =="+arruser.length+"-----------"+arruser[0].getBirthday());
-		 retstr = jtt.map2Json();
-		System.out.println("retstr="+retstr);
-		Map<?,?> map  = jtt.json2Map(retstr);
-	}
+//	public static void main(String[] args) throws JsonGenerationException, JsonMappingException, IOException
+//	{
+//		JsonTranTest jtt = new JsonTranTest();
+//		String retstr = jtt.Entry2Json();
+//		System.out.println("retstr="+retstr);
+//		User user = jtt.json2Entry(retstr);
+//		System.out.println("user="+user.getBirthday());
+//		 retstr = jtt.list2Json();
+//		 System.out.println("retstr="+retstr);
+//		 User[] arruser = jtt.json2Array(retstr);
+//		System.out.println("User[] arruser =="+arruser.length+"-----------"+arruser[0].getBirthday());
+//		 retstr = jtt.map2Json();
+//		System.out.println("retstr="+retstr);
+//		Map<?,?> map  = jtt.json2Map(retstr);
+//	}
 
 }

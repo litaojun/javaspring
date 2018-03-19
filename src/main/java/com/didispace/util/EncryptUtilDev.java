@@ -334,20 +334,20 @@ public class EncryptUtilDev {
 
 
 
-	public static void main(String[] args)
-	{
-		Map<String, Object> beanMap = new HashMap<String,Object>();
-		beanMap.put("buCode", "01001");
-		beanMap.put("buMemberId", "ovQBPxF5fKIIgcJ68ZQ3HwRxaOuQ");
-		beanMap.put("nickname", "小丑");
-		beanMap.put("mobilePhone", "18807977275");
-		beanMap.put("gender",1);
-		beanMap.put("birthday", "1997-03-26");
-		beanMap.put("avatar", "http://wx.qlogo.cn/mmopen/hbTdDcicclzyUcQ0jlHb0Wo4ATrFqJLFicZHFzb7dyiaRzaDj17BGRMb5l8dsmmScNSkVvskYHZR854ib4MXyEuJnjD7vNQ5ByFD/0");
-		beanMap.put("memberLevel", "优质级会员");
-		beanMap.put("memberMsg", "还需1次订购，475元就能升级啦。");
-		String apiSec = "01001";
-		String sec = genSign(beanMap,apiSec);
-		System.out.println(sec);
-	}
+//	public static void main(String[] args)
+//	{
+//		Map<String, Object> beanMap = new HashMap<String,Object>();
+//		beanMap.put("buCode", "01001");
+//		beanMap.put("buMemberId", "ovQBPxF5fKIIgcJ68ZQ3HwRxaOuQ");
+//		beanMap.put("nickname", "小丑");
+//		beanMap.put("mobilePhone", "18807977275");
+//		beanMap.put("gender",1);
+//		beanMap.put("birthday", "1997-03-26");
+//		beanMap.put("avatar", "http://wx.qlogo.cn/mmopen/hbTdDcicclzyUcQ0jlHb0Wo4ATrFqJLFicZHFzb7dyiaRzaDj17BGRMb5l8dsmmScNSkVvskYHZR854ib4MXyEuJnjD7vNQ5ByFD/0");
+//		beanMap.put("memberLevel", "优质级会员");
+//		beanMap.put("memberMsg", "还需1次订购，475元就能升级啦。");
+//		String apiSec = "01001";
+//		String sec = genSign(beanMap,apiSec);
+//		System.out.println(sec);
+//	}
 }
