@@ -5,7 +5,8 @@ import java.util.Map;
 
 import com.didispace.test.dao.impl.TestCaseRecord;
 //http://blog.csdn.net/winter_chen001/article/details/77249029
-public interface TestCaseRecordMapper {
+public interface TestCaseRecordMapper 
+{
     int deleteByPrimaryKey(Integer id);
 
     int insert(TestCaseRecord record);
