@@ -19,8 +19,14 @@ import com.didispace.test.core.TestDataManager;
 import com.didispace.test.core.TestManageContorl;
 import com.didispace.test.dao.impl.TestCaseRecord;
 import com.didispace.test.dao.impl.TestPlan;
+import com.didispace.test.dao.impl.TestRunConfig;
+import com.didispace.test.dao.impl.TestRunProcess;
 import com.didispace.test.dao.mapping.TestCaseRecordMapper;
+import com.didispace.test.dao.mapping.TestPlanMapper;
+import com.didispace.test.dao.mapping.TestRunConfigMapper;
+import com.didispace.test.dao.mapping.TestRunProcessMapper;
 import com.didispace.test.tcase.infs.UserAddRsp;
+import com.didispace.test.util.CallShell;
 import com.didispace.test.util.MatchResultMethon;
 import com.didispace.test.util.MethodContext;
 import com.didispace.web.User;
@@ -32,6 +38,12 @@ public class TestContorl
 	private ObjectMapper objectMapper = new ObjectMapper();
 	@Autowired
 	private TestCaseRecordMapper testCaseRecordMapper;
+	@Autowired
+	private TestPlanMapper testPlanMapper;
+	@Autowired
+	private TestRunConfigMapper testRunConfigMapper;
+	@Autowired
+	private TestRunProcessMapper testRunProcessMapper;
 	static
 	{
 		if(TestContorl.tdm == null)
@@ -142,32 +154,47 @@ public class TestContorl
 	 }
 	
 	@RequestMapping(value = "/prop/testplanlist", method = { RequestMethod.GET })
-	 public HashMap<String,Object> resultTestPlanList(@RequestParam("planid") Integer planid) 
+	 public HashMap<String,Object> resultTestPlanList(@RequestParam("projectname") String projectname) 
 	 {
 		ArrayList<TestPlan> rst = new  ArrayList<TestPlan>();
-		TestPlan tp = new TestPlan();
-		tp.setPlantime("2018-01-03 22:03:11");
-		tp.setId(1);
-		rst.add(tp);
-		TestPlan tpp = new TestPlan();
-		tpp.setPlantime("2018-01-03 21:03:11");
-		tpp.setId(2);
-		rst.add(tpp);
-//		for(Map<String, Object> map : rst)
-//		{
-//			String interfacename = (String) map.get("interfaceName");
-//			TestCaseRecord tcr = new TestCaseRecord();
-//			tcr.setPlanId(planid);
-//			tcr.setInterfacename(interfacename);
-//			List<TestCaseRecord> caselist = this.testCaseRecordMapper.getTestCasesByPlanIdOrInterface(tcr);
-//			map.put("result", caselist);
-//		}
+		rst = this.testPlanMapper.selectPlanListByProjectName(projectname);
 		HashMap<String,Object> retmap = new HashMap<String,Object>();
 		retmap.put("code", "000000");
 		retmap.put("listplan", rst);
 //		System.out.println("tcr.getClassname=" + tcr.getClassname());
 		return retmap;
 	 }
+	@RequestMapping(value = "/prop/runtestplan", method = { RequestMethod.GET })
+	public String runTestByProjectName(@RequestParam("projectname") String projectname,@RequestParam("startime")String startime) throws IOException
+	{
+		TestRunConfig testRunConfig = testRunConfigMapper.selectByProName(projectname);
+		String retStr = "sucess";
+		if(testRunConfig != null)
+		{
+			if(testRunConfig.getRuntype() == 1)
+			{
+				String runCmd = testRunConfig.getRuncmd();
+				runCmd = runCmd + " " + startime;
+				retStr = CallShell.runShellCmd(runCmd);
+			}
+		}
+		else
+			retStr = "fail";
+		return retStr;
+	}
+	
+	@RequestMapping(value = "/prop/queryRunProcess", method = { RequestMethod.GET })
+	public TestRunProcess getTestRunProcessByProjectAndStarttime(@RequestParam("projectname") String projectname,@RequestParam("startime")String startime )
+	{
+		TestRunProcess retTestRunProcess;
+		TestRunProcess trp = new TestRunProcess();
+		trp.setProjectname(projectname);
+		trp.setStarttime(startime);
+		retTestRunProcess = testRunProcessMapper.selectByPronameAndStarttime(trp);
+		return retTestRunProcess;
+	}
+	
+	
 	
 	@RequestMapping(value = "/prop/users", method = { RequestMethod.GET })
 	 public String resultComparetest(@RequestParam("uuid") String name,@RequestParam("moblieNo") String caseid) 

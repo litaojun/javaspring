@@ -2,7 +2,7 @@
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
     <!-- ���ݿ�������λ�� -->
-    <classPathEntry location="D:\litaojun\workspace\Chapter1\generator\mysql-connector-java-5.1.34.jar" /> 
+    <classPathEntry location="D:\litaojun\workspace\springplan\generator\mysql-connector-java-5.1.34.jar" /> 
     <!-- <classPathEntry location="C:\oracle\product\10.2.0\db_1\jdbc\lib\ojdbc14.jar" />-->
     <context id="DB2Tables" targetRuntime="MyBatis3">
         <commentGenerator>
@@ -16,20 +16,22 @@
             <property name="forceBigDecimals" value="false" />
         </javaTypeResolver>
         <!-- ����ʵ����İ�����λ�ã��������ý����ɵ�ʵ�������me.gacl.domain������� -->
-        <javaModelGenerator targetPackage="com.didispace.test.dao.impl" targetProject="D:\litaojun\workspace\Chapter1\src\main\java">
+        <javaModelGenerator targetPackage="com.didispace.test.dao.impl" targetProject="D:\litaojun\workspace\springplan\src\main\java">
             <property name="enableSubPackages" value="true" />
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
         <!-- ���ɵ�SQLӳ���ļ�������λ�ã��������ý����ɵ�SQLӳ���ļ�����me.gacl.mapping������� -->
-        <sqlMapGenerator targetPackage="com.didispace.test.dao.mapping" targetProject="D:\litaojun\workspace\Chapter1\src\main\resources">
+        <sqlMapGenerator targetPackage="com.didispace.test.dao.mapping" targetProject="D:\litaojun\workspace\springplan\src\main\resources">
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
         <!-- ����DAO�İ�����λ�ã��������ý����ɵ�dao�����me.gacl.dao������� -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.didispace.test.dao.mapping" targetProject="D:\litaojun\workspace\Chapter1\src\main\java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.didispace.test.dao.mapping" targetProject="D:\litaojun\workspace\springplan\src\main\java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
         <!-- Ҫ������Щ��(����tableName��domainObjectName�Ϳ���) -->
-        <table tableName="test_plan" domainObjectName="TestPlan" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" />
-		<table tableName="test_case_record" domainObjectName="TestCaseRecord" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" />
+        <!--  <table tableName="test_plan" domainObjectName="TestPlan" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" /> -->
+		    <!--<table tableName="test_case_record" domainObjectName="TestCaseRecord" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" /> -->
+        <!--  <table tableName="test_run_config" domainObjectName="TestRunConfig" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" />-->
+        <table tableName="test_run_process" domainObjectName="TestRunProcess" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" />
     </context>
 </generatorConfiguration>

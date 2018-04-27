@@ -19,6 +19,12 @@
     from test_plan
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectPlanListByProjectName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from test_plan
+    where projectname = #{projectname,jdbcType=VARCHAR}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from test_plan
     where id = #{id,jdbcType=INTEGER}

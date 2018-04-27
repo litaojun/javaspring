@@ -1,7 +1,8 @@
 package com.didispace.test.dao.mapping;
 
-import com.didispace.test.dao.impl.TestPlan;
+import java.util.ArrayList;
 
+import com.didispace.test.dao.impl.TestPlan;
 public interface TestPlanMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -15,4 +16,5 @@ public interface TestPlanMapper {
 
     int updateByPrimaryKey(TestPlan record);
     int selectMaxId();
-}
+    ArrayList<TestPlan> selectPlanListByProjectName(String projectname);
+} 
