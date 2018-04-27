@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Implementation-Title: Chapter1
+Implementation-Version: 1.0.0
+Archiver-Version: Plexus Archiver
+Built-By: li.taojun
+Implementation-Vendor-Id: com.didispace
+Spring-Boot-Version: 1.4.5.RELEASE
+Implementation-Vendor: Pivotal Software, Inc.
+Main-Class: org.springframework.boot.loader.JarLauncher
+Start-Class: com.didispace.Chapter1Application
+Spring-Boot-Classes: BOOT-INF/classes/
+Spring-Boot-Lib: BOOT-INF/lib/
+Created-By: Apache Maven 3.3.9
+Build-Jdk: 1.8.0_77
+Implementation-URL: http://projects.spring.io/spring-boot/springplan/

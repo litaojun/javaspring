@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.didispace.test.dao.mapping.TestRunConfigMapper" >
+  <resultMap id="BaseResultMap" type="com.didispace.test.dao.impl.TestRunConfig" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="projectname" property="projectname" jdbcType="VARCHAR" />
+    <result column="runtype" property="runtype" jdbcType="INTEGER" />
+    <result column="runcmd" property="runcmd" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, projectname, runtype, runcmd
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from test_run_config
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectByProName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from test_run_config
+    where projectname = #{projectname,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from test_run_config
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.didispace.test.dao.impl.TestRunConfig" >
+    insert into test_run_config (id, projectname, runtype, 
+      runcmd)
+    values (#{id,jdbcType=INTEGER}, #{projectname,jdbcType=VARCHAR}, #{runtype,jdbcType=INTEGER}, 
+      #{runcmd,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.didispace.test.dao.impl.TestRunConfig" >
+    insert into test_run_config
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="projectname != null" >
+        projectname,
+      </if>
+      <if test="runtype != null" >
+        runtype,
+      </if>
+      <if test="runcmd != null" >
+        runcmd,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="projectname != null" >
+        #{projectname,jdbcType=VARCHAR},
+      </if>
+      <if test="runtype != null" >
+        #{runtype,jdbcType=INTEGER},
+      </if>
+      <if test="runcmd != null" >
+        #{runcmd,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.didispace.test.dao.impl.TestRunConfig" >
+    update test_run_config
+    <set >
+      <if test="projectname != null" >
+        projectname = #{projectname,jdbcType=VARCHAR},
+      </if>
+      <if test="runtype != null" >
+        runtype = #{runtype,jdbcType=INTEGER},
+      </if>
+      <if test="runcmd != null" >
+        runcmd = #{runcmd,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.didispace.test.dao.impl.TestRunConfig" >
+    update test_run_config
+    set projectname = #{projectname,jdbcType=VARCHAR},
+      runtype = #{runtype,jdbcType=INTEGER},
+      runcmd = #{runcmd,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

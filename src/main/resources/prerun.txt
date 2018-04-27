@@ -1,0 +1,21 @@
+rm -rf /usr/bin/python
+rm -rf /usr/bin/pip
+rm -rf /etc/alternatives/python
+rm -rf /etc/alternatives/pip
+ln -s /usr/bin/pip-3.6 /etc/alternatives/pip
+ln -s /usr/bin/python3.6 /etc/alternatives/python
+ln -s /etc/alternatives/pip /usr/bin/pip
+ln -s /etc/alternatives/python /usr/bin/python
+pip install xlrd
+pip install pymysql
+pip install requests
+
+pip install xlrd
+pip install pymysql
+pip install requests
+git config --global credential.helper store
+cd /home/testhome/apache-tomcat-7.0.68/bin
+cd /home/testhome/apache-tomcat-7.0.68/webapps
+git clone https://github.com/litaojun/testplandisplay.git
+unzip apache-tomcat-7.0.68.zip -d /home/testhome/
+./catalina.sh start

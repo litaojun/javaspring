@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.didispace.test.dao.mapping.TestRunProcessMapper" >
+  <resultMap id="BaseResultMap" type="com.didispace.test.dao.impl.TestRunProcess" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="starttime" property="starttime" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="endtime" property="endtime" jdbcType="VARCHAR" />
+    <result column="projectname" property="projectname" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, starttime, status, endtime, projectname
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from test_run_process
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByPronameAndStarttime" resultMap="BaseResultMap" parameterType="com.didispace.test.dao.impl.TestRunProcess" >
+    select 
+    <include refid="Base_Column_List" />
+    from test_run_process
+    where projectname = #{projectname,jdbcType=VARCHAR} and
+          starttime = #{starttime,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from test_run_process
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.didispace.test.dao.impl.TestRunProcess" >
+    insert into test_run_process (id, starttime, status, 
+      endtime, projectname)
+    values (#{id,jdbcType=INTEGER}, #{starttime,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{endtime,jdbcType=VARCHAR}, #{projectname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.didispace.test.dao.impl.TestRunProcess" >
+    insert into test_run_process
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="starttime != null" >
+        starttime,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="endtime != null" >
+        endtime,
+      </if>
+      <if test="projectname != null" >
+        projectname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="starttime != null" >
+        #{starttime,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="endtime != null" >
+        #{endtime,jdbcType=VARCHAR},
+      </if>
+      <if test="projectname != null" >
+        #{projectname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.didispace.test.dao.impl.TestRunProcess" >
+    update test_run_process
+    <set >
+      <if test="starttime != null" >
+        starttime = #{starttime,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="endtime != null" >
+        endtime = #{endtime,jdbcType=VARCHAR},
+      </if>
+      <if test="projectname != null" >
+        projectname = #{projectname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.didispace.test.dao.impl.TestRunProcess" >
+    update test_run_process
+    set starttime = #{starttime,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      endtime = #{endtime,jdbcType=VARCHAR},
+      projectname = #{projectname,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
