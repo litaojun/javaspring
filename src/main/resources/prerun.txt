@@ -18,3 +18,8 @@ git config --global credential.helper store
 git clone https://github.com/litaojun/testplandisplay.git
 cd /home/testhome/apache-tomcat-7.0.86/bin
 ./catalina.sh start
+echo "export PYTHONPATH=/home/testhome/unittestExBaseb:/home/testhome/steamOmTest" >> /root/.bashrc
+echo "export PATH=$PATH:/home/testhome" >> /root/.bashrc
+source /root/.bashrc
+echo "cd /home/testhome/steamOmTest" >> /home/testhome/run.sh
+echo "python steam/mediares/query/mediaresQueryTest.py $1" >> /home/testhome/run.sh
