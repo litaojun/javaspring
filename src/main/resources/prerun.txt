@@ -9,13 +9,12 @@ ln -s /etc/alternatives/python /usr/bin/python
 pip install xlrd
 pip install pymysql
 pip install requests
-
-pip install xlrd
-pip install pymysql
-pip install requests
+cd /home/
+mkdir testhome
+wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-7/v7.0.86/bin/apache-tomcat-7.0.86.zip
+unzip apache-tomcat-7.0.86.zip -d /home/testhome/
+cd /home/testhome/apache-tomcat-7.0.86/webapps
 git config --global credential.helper store
-cd /home/testhome/apache-tomcat-7.0.68/bin
-cd /home/testhome/apache-tomcat-7.0.68/webapps
 git clone https://github.com/litaojun/testplandisplay.git
-unzip apache-tomcat-7.0.68.zip -d /home/testhome/
+cd /home/testhome/apache-tomcat-7.0.86/bin
 ./catalina.sh start
